@@ -59,6 +59,7 @@ class _AnimatedTextBarExampleState extends State<AnimatedTextBarExample> {
           style: Theme.of(context).textTheme.headline6,
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        centerTitle: true,
       ),
       bottomNavigationBar: AnimatedTextBar(
         borderRadius: BorderRadius.circular(30),

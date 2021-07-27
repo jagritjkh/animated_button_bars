@@ -4,11 +4,46 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+To use this package, add `animated_button_bars` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+See example for all animation wrappers and animated text bottom bar
+
+## Add dependency
+```
+dependencies:
+  animated_button_bars: ^0.0.1
+```
+
+## Import
+```
+import 'package:animated_button_bars/animated_button_bars.dart';
+```
+
+## Usage: AnimatedTextBar
+
+### Single item in the list of Bar Items
+```
+BarItem(
+    label: "Yellow",
+    iconData: Icons.skip_previous,
+    activeColor: Colors.yellow,
+),
+```
+
+### AnimatedTextBar itself
+```
+AnimatedTextBar(
+    borderRadius: BorderRadius.circular(30),
+    margin: EdgeInsets.all(20),
+    onTap: (index) {
+        setState(() {
+            _currentIndex = index;
+        });
+    },
+    items: _barItems,
+),
+```
+
+Many more animated button bars will be added soon..!
+
+Made with :heart: by Jagrit
