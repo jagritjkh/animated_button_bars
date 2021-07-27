@@ -6,7 +6,7 @@ A new Flutter project.
 
 To use this package, add `animated_button_bars` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
-See example for all animation wrappers and animated text bottom bar
+See example for the usage of animated button bar
 
 ## Add dependency
 ```

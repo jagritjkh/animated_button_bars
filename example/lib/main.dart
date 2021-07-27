@@ -55,7 +55,7 @@ class _AnimatedTextBarExampleState extends State<AnimatedTextBarExample> {
       backgroundColor: _colors[_currentIndex],
       appBar: AppBar(
         title: Text(
-          'Animation Wrappers',
+          'Animation Button Bars',
           style: Theme.of(context).textTheme.headline6,
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
