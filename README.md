@@ -11,7 +11,7 @@ See example for the usage of animated button bar
 ## Add dependency
 ```
 dependencies:
-  animated_button_bars: ^0.0.1
+  animated_button_bars: ^0.0.2
 ```
 
 ## Import

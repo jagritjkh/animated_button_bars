@@ -253,7 +253,7 @@ class _AnimatedTextBarState extends State<AnimatedTextBar>
   }
 }
 
-/// bottom bar item to build the bar single bar item with animation
+/// private bottom bar item [_BottomBarItem] to build the bar single bar item with animation
 class _BottomBarItem extends StatefulWidget {
   _BottomBarItem(
     this.item,
@@ -304,6 +304,7 @@ class _BottomBarItemState extends State<_BottomBarItem>
     );
   }
 
+  /// builds one item of the button bar
   Row _buildRowItem() {
     return Row(
       children: [
@@ -329,6 +330,7 @@ class _BottomBarItemState extends State<_BottomBarItem>
     );
   }
 
+  /// builds animated text
   AnimatedSize _animatedText() {
     return AnimatedSize(
       duration: widget.animatedTextDuration,
@@ -343,4 +345,8 @@ class _BottomBarItemState extends State<_BottomBarItem>
   }
 }
 
+
+/// enum [TextPosition] is used to give the position of the animated text
+///
+/// Defaults to [TextPosition.RIGHT]
 enum TextPosition { LEFT, RIGHT }

@@ -1,6 +1,6 @@
 name: animated_button_bars
 description: Animated button bars which can be used as bottom navigation bars as well as tab bar.
-version: 0.0.1+1
+version: 0.0.2
 homepage: https://github.com/jagritjkh/animated_button_bars.git
 
 environment:
