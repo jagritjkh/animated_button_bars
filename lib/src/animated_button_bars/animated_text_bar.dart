@@ -36,8 +36,8 @@ class AnimatedTextBar extends StatefulWidget {
     this.selectedItemBorderRadius,
     this.selectedFontSize = 14.0,
     this.unselectedFontSize = 12.0,
-  })  : assert(elevation == null || elevation >= 0.0),
-        super(key: key);
+  }) : assert(elevation == null || elevation >= 0.0),
+       super(key: key);
 
   /// Defines the appearance of the button items that are arrayed within the
   /// animated text bar.
@@ -144,8 +144,7 @@ class AnimatedTextBar extends StatefulWidget {
   _AnimatedTextBarState createState() => _AnimatedTextBarState();
 }
 
-class _AnimatedTextBarState extends State<AnimatedTextBar>
-    with TickerProviderStateMixin {
+class _AnimatedTextBarState extends State<AnimatedTextBar> with TickerProviderStateMixin {
   late int _selectedBarIndex;
 
   @override
@@ -161,8 +160,7 @@ class _AnimatedTextBarState extends State<AnimatedTextBar>
       child: Material(
         elevation: widget.elevation ?? 8.0,
         borderRadius: widget.borderRadius ?? BorderRadius.zero,
-        color:
-            widget.backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
+        color: widget.backgroundColor ?? Theme.of(context).scaffoldBackgroundColor,
         shadowColor: widget.shadowColor,
         child: Padding(
           padding: widget.padding ?? const EdgeInsets.symmetric(vertical: 8.0),
@@ -181,27 +179,21 @@ class _AnimatedTextBarState extends State<AnimatedTextBar>
   static TextStyle _effectiveTextStyle(TextStyle? textStyle, double fontSize) {
     textStyle ??= const TextStyle();
     // Prefer the font size on textStyle if present.
-    return textStyle.fontSize == null
-        ? textStyle.copyWith(fontSize: fontSize)
-        : textStyle;
+    return textStyle.fontSize == null ? textStyle.copyWith(fontSize: fontSize) : textStyle;
   }
 
   /// method that returns the item background color
   Color _itemBackgroundColor(bool isSelected, BarItem item) {
     return isSelected
-        ? (item.activeColor ??
-                widget.selectedItemColor ??
-                Theme.of(context).primaryColor)
-            .withOpacity(0.075)
+        ? (item.activeColor ?? widget.selectedItemColor ?? Theme.of(context).primaryColor)
+            .withValues(alpha: 0.075)
         : Colors.transparent;
   }
 
   /// method that returns the item color when item is selected or not
   Color _itemColor(bool isSelected, BarItem item) {
     return isSelected
-        ? item.activeColor ??
-            widget.selectedItemColor ??
-            Theme.of(context).primaryColor
+        ? item.activeColor ?? widget.selectedItemColor ?? Theme.of(context).primaryColor
         : item.inactiveColor ??
             widget.unselectedItemColor ??
             Theme.of(context).unselectedWidgetColor;
@@ -209,8 +201,7 @@ class _AnimatedTextBarState extends State<AnimatedTextBar>
 
   /// method that returns the bottom bar items
   List<Widget> _createBarItems() {
-    final BottomNavigationBarThemeData bottomTheme =
-        BottomNavigationBarTheme.of(context);
+    final BottomNavigationBarThemeData bottomTheme = BottomNavigationBarTheme.of(context);
 
     final TextStyle effectiveSelectedLabelStyle = _effectiveTextStyle(
       widget.selectedLabelStyle ?? bottomTheme.selectedLabelStyle,
@@ -234,9 +225,7 @@ class _AnimatedTextBarState extends State<AnimatedTextBar>
               widget.onTap?.call(i);
             });
           },
-          isSelected
-              ? effectiveSelectedLabelStyle
-              : effectiveUnselectedLabelStyle,
+          isSelected ? effectiveSelectedLabelStyle : effectiveUnselectedLabelStyle,
           _itemColor(isSelected, item),
           _itemBackgroundColor(isSelected, item),
           widget.textPosition,
@@ -283,8 +272,7 @@ class _BottomBarItem extends StatefulWidget {
   _BottomBarItemState createState() => _BottomBarItemState();
 }
 
-class _BottomBarItemState extends State<_BottomBarItem>
-    with SingleTickerProviderStateMixin {
+class _BottomBarItemState extends State<_BottomBarItem> {
   BarItem get item => widget.item;
 
   @override
@@ -295,10 +283,7 @@ class _BottomBarItemState extends State<_BottomBarItem>
       child: AnimatedContainer(
         padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
         duration: widget.animatedTextDuration,
-        decoration: BoxDecoration(
-          color: widget.bgColor,
-          borderRadius: widget.borderRadius,
-        ),
+        decoration: BoxDecoration(color: widget.bgColor, borderRadius: widget.borderRadius),
         child: _buildRowItem(),
       ),
     );
@@ -307,24 +292,12 @@ class _BottomBarItemState extends State<_BottomBarItem>
   Row _buildRowItem() {
     return Row(
       children: [
-        if (item.label != null && widget.textPosition == TextPosition.LEFT)
-          _animatedText(),
-        if (item.label != null && widget.textPosition == TextPosition.LEFT)
-          SizedBox(width: 10.0),
-        if (item.image != null)
-          ImageIcon(
-            AssetImage(item.image!),
-            color: widget.color,
-          ),
-        if (item.iconData != null)
-          Icon(
-            item.iconData!,
-            color: widget.color,
-          ),
-        if (item.label != null && widget.textPosition == TextPosition.RIGHT)
-          SizedBox(width: 10.0),
-        if (item.label != null && widget.textPosition == TextPosition.RIGHT)
-          _animatedText(),
+        if (item.label != null && widget.textPosition == TextPosition.LEFT) _animatedText(),
+        if (item.label != null && widget.textPosition == TextPosition.LEFT) SizedBox(width: 10.0),
+        if (item.image != null) ImageIcon(AssetImage(item.image!), color: widget.color),
+        if (item.iconData != null) Icon(item.iconData!, color: widget.color),
+        if (item.label != null && widget.textPosition == TextPosition.RIGHT) SizedBox(width: 10.0),
+        if (item.label != null && widget.textPosition == TextPosition.RIGHT) _animatedText(),
       ],
     );
   }
@@ -334,11 +307,7 @@ class _BottomBarItemState extends State<_BottomBarItem>
       duration: widget.animatedTextDuration,
       curve: widget.animatedTextCurve,
       alignment: Alignment.centerRight,
-      vsync: this,
-      child: Text(
-        widget.isSelected ? item.label! : "",
-        style: widget.labelStyle,
-      ),
+      child: Text(widget.isSelected ? item.label! : "", style: widget.labelStyle),
     );
   }
 }
